@@ -11,6 +11,8 @@ const reducer=(preState,action)=>{
         return {...preState,city:action.data}
     }else if(action.type==='setPosition'){
         return {...preState,position:action.data}
+    }else if(action.type==='setData'){
+        return {...preState,dataArray:[...preState.dataArray,action.data]}
     }
 
     else {
@@ -22,7 +24,8 @@ function App() {
         image:'',
         name:'',
         city:'',
-        position:''
+        position:'',
+        dataArray:[]
     });
 
     console.log(state)
@@ -45,7 +48,15 @@ function App() {
             type:'setPosition',
             data:e.target.value
         })}/>
-        <button>Set Data</button>
+        <button onClick={()=>setState({
+            type:'setData',
+            data:{
+               image:state.image,
+               name:state.name,
+               city:state.city,
+               position:state.position
+            }
+        })}>Set Data</button>
 
         <div></div>
     </div>
