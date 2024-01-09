@@ -2,8 +2,34 @@
 import './App.css'
 import {useReducer} from "react";
 
+const reducerActionType={
+    setImage:'setImage',
+    setName:'setName',
+    setCity:'setCity',
+    setPosition:'setPosition',
+    setData:'setData'
+
+
+}
+
 const reducer=(preState,action)=>{
-    if(action.type==='setImage'){
+
+    switch (action.type){
+        case reducerActionType.setImage:
+            return{...preState,image: action.data}
+        case reducerActionType.setName:
+            return {...preState,name: action.data}
+        case reducerActionType.setCity:
+            return {...preState,city:  action.data}
+        case reducerActionType.setPosition:
+            return {...preState,position: action. data}
+        case reducerActionType.setData:
+            return {...preState,dataArray:[...preState.dataArray, action.data]}
+
+        default:
+            return preState
+    }
+ /*   if(action.type==='setImage'){
         return {...preState,image:action.data}
     }else if(action.type==='setName'){
         return {...preState,name:action.data}
@@ -17,7 +43,7 @@ const reducer=(preState,action)=>{
 
     else {
         return  preState
-    }
+    }*/
 }
 function App() {
     const [state,setState]=useReducer(reducer, {
