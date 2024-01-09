@@ -5,7 +5,15 @@ import {useReducer} from "react";
 const reducer=(preState,action)=>{
     if(action.type==='setImage'){
         return {...preState,image:action.data}
-    }else {
+    }else if(action.type==='setName'){
+        return {...preState,name:action.data}
+    }else if(action.type==='setCity'){
+        return {...preState,city:action.data}
+    }else if(action.type==='setPosition'){
+        return {...preState,position:action.data}
+    }
+
+    else {
         return  preState
     }
 }
@@ -25,7 +33,7 @@ function App() {
             type:'setImage',
             data:e.target.value
         })}/>
-        <input type="text"  value={state.name} placeholder={"enter name"} onChange={(e)=>setState({
+        <input type="text" value={state.name}   placeholder={"enter name"} onChange={(e)=>setState({
             type:'setName',
             data:e.target.value
         })}/>
