@@ -10,7 +10,13 @@ const reducer=(preState,action)=>{
     }
 }
 function App() {
-    const [state,setState]=useReducer(reducer, "");
+    const [state,setState]=useReducer(reducer, {
+        image:'',
+        name:'',
+        city:'',
+        position:''
+    });
+
     console.log(state)
 
   return (
